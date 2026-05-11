@@ -712,7 +712,7 @@ export default function App() {
             <div className="mt-12 text-center" data-aos="fade-up">
               <p className="text-[10px] text-wedding-secondary font-medium leading-relaxed italic opacity-80">
                 Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.<br/>
-                Dan jika memberi adalah ungkapan kasih Anda, kami ucapkan terima kasih.
+                Dan Jika memberi adalah ungkapan kasih Anda, kami ucapkan terima kasih.
               </p>
             </div>
           </div>
