@@ -25,7 +25,7 @@ import 'aos/dist/aos.css';
 import confetti from 'canvas-confetti';
 
 // --- Constants ---
-const WEDDING_DATE = new Date('2026-12-25T09:00:00');
+const WEDDING_DATE = new Date('2026-06-02T09:00:00');
 const BANK_ACCOUNTS = [
   {
     bankName: 'BCA',
@@ -397,29 +397,15 @@ export default function App() {
           <video 
             ref={videoRef}
             muted 
+            loop
             playsInline
+            autoPlay
             preload="auto"
-            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover transform-gpu"
-            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover transform-gpu pointer-events-none"
+            style={{ transform: 'translateZ(0)' }}
           >
             <source src="/assets/videos/intro2.mp4" type="video/mp4" />
           </video>
-          
-          {/* Optional: Minimal Scroll Indicator */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={isOpen ? { opacity: 1 } : {}}
-            transition={{ delay: 3, duration: 1 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-          >
-            <span className="text-[8px] uppercase tracking-[0.4em] text-white/70 font-bold drop-shadow-md">Scroll</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
-              <ChevronDown size={14} className="text-white/70 drop-shadow-md" />
-            </motion.div>
-          </motion.div>
         </section>
         {/* Quran Verse Section */}
         <section className="section-padding bg-wedding-accent relative overflow-hidden">
