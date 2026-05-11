@@ -409,7 +409,9 @@ export default function App() {
             ref={videoRef}
             muted 
             playsInline
-            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover"
+            preload="auto"
+            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover transform-gpu"
+            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
           >
             <source src="/assets/videos/intro2.mp4" type="video/mp4" />
           </video>
