@@ -344,26 +344,15 @@ export default function App() {
               initial="hidden"
               animate="visible"
             >
-              <motion.div variants={itemVariants} className="mb-4">
+              <motion.div variants={itemVariants} className="mb-10">
                 <div className="flex items-center justify-center gap-3">
                   <div className="w-8 h-px bg-wedding-secondary/50"></div>
-                  <span className="tracking-[0.5em] text-[8px] text-white/90 uppercase font-bold drop-shadow-md">
+                  <span className="tracking-[0.5em] text-[10px] text-white/90 uppercase font-bold drop-shadow-md">
                     The Wedding Invitation Of
                   </span>
                   <div className="w-8 h-px bg-wedding-secondary/50"></div>
                 </div>
               </motion.div>
- 
-              { /* <motion.div 
-                variants={itemVariants}
-                className="w-48 h-64 rounded-[2rem] bg-wedding-accent overflow-hidden border border-wedding-border mx-auto mb-8 shadow-md"
-              >
-                <img 
-                  src="/assets/images/gallery1.jpeg" 
-                  alt="Wedding Cover" 
-                  className="w-full h-full object-cover shadow-inner"
-                />
-              </motion.div> */}
 
               <motion.h1 
                 variants={nameVariants}
@@ -435,15 +424,23 @@ export default function App() {
         {/* Quran Verse Section */}
         <section className="section-padding bg-wedding-accent relative overflow-hidden">
           <div className="max-w-3xl mx-auto px-6 text-center" data-aos="fade-up">
-            <div className="mb-8">
-              <span className="font-serif text-3xl md:text-4xl text-wedding-primary">﷽</span>
+            <div className="relative border border-wedding-secondary/30 rounded-3xl p-8 md:p-12 bg-white/40 backdrop-blur-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)]">
+              {/* Decorative corner elements */}
+              <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-wedding-secondary/50 rounded-tl-xl"></div>
+              <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-wedding-secondary/50 rounded-tr-xl"></div>
+              <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-wedding-secondary/50 rounded-bl-xl"></div>
+              <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-wedding-secondary/50 rounded-br-xl"></div>
+              
+              <div className="mb-8">
+                <span className="font-serif text-4xl md:text-5xl text-wedding-primary">﷽</span>
+              </div>
+              <p className="text-[13px] md:text-[15px] text-wedding-primary/80 leading-relaxed font-medium mb-6 relative z-10">
+                "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
+              </p>
+              <p className="tracking-widest text-[10px] md:text-xs text-wedding-secondary font-bold uppercase">
+                (QS. Ar-Rum: 21)
+              </p>
             </div>
-            <p className="text-[13px] md:text-[15px] text-wedding-secondary/80 leading-relaxed font-medium mb-6">
-              "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
-            </p>
-            <p className="tracking-widest text-[10px] md:text-xs text-wedding-primary font-bold uppercase">
-              (QS. Ar-Rum: 21)
-            </p>
           </div>
         </section>
 
