@@ -428,16 +428,15 @@ export default function App() {
             ref={videoRef}
             muted 
             playsInline
-            autoPlay
             preload="auto"
-            onEnded={() => {
-              if (videoRef.current) {
-                videoRef.current.currentTime = 5;
-                videoRef.current.play().catch(e => console.log("Video loop play failed:", e));
-              }
+            disablePictureInPicture
+            disableRemotePlayback
+            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover pointer-events-none"
+            style={{ 
+              transform: 'translate3d(0, 0, 0)', 
+              willChange: 'transform',
+              backfaceVisibility: 'hidden'
             }}
-            className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover transform-gpu pointer-events-none"
-            style={{ transform: 'translateZ(0)' }}
           >
             <source src="/assets/videos/intro2.mp4" type="video/mp4" />
           </video>
@@ -743,7 +742,7 @@ export default function App() {
           
           <div className="max-w-4xl mx-auto flex flex-col items-center">
             {/* Footer Photo */}
-            <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border-4 border-white shadow-md mx-auto" data-aos="zoom-in">
+            <div className="w-50 h-50 rounded-full overflow-hidden mb-8 border-4 border-white shadow-md mx-auto" data-aos="zoom-in">
               <img src="/assets/images/gallery1.jpeg" className="w-full h-full object-cover" alt="Andri & Tia" />
             </div>
 
