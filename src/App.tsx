@@ -70,16 +70,16 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="flex gap-4 md:gap-6 justify-center mt-8">
+    <div className="flex gap-4 md:gap-8 justify-center mt-8">
       {[
         { label: 'Days', value: timeLeft.days },
         { label: 'Hours', value: timeLeft.hours },
         { label: 'Mins', value: timeLeft.minutes },
         { label: 'Secs', value: timeLeft.seconds }
       ].map((item, idx) => (
-        <div key={idx} className="flex flex-col items-center bg-white rounded-xl border border-wedding-border p-3 min-w-16 md:min-w-20 shadow-sm">
-          <span className="text-2xl md:text-3xl font-serif text-wedding-primary">{item.value}</span>
-          <span className="text-[8px] uppercase tracking-widest text-wedding-secondary font-bold mt-1">{item.label}</span>
+        <div key={idx} className="flex flex-col items-center bg-white rounded-2xl border border-wedding-border p-5 md:p-6 min-w-20 md:min-w-28 shadow-md">
+          <span className="text-4xl md:text-5xl font-serif text-wedding-primary mb-1">{item.value}</span>
+          <span className="text-[10px] md:text-xs uppercase tracking-widest text-wedding-secondary font-bold">{item.label}</span>
         </div>
       ))}
     </div>
@@ -319,6 +319,7 @@ export default function App() {
       <audio 
         ref={audioRef} 
         loop 
+        autoPlay
         preload="auto"
         src="/assets/music/background.mp3" 
       />
@@ -373,7 +374,7 @@ export default function App() {
               <motion.div variants={itemVariants} className="mb-10">
                 <div className="flex items-center justify-center gap-3">
                   <div className="w-8 h-px bg-wedding-secondary/50"></div>
-                  <span className="tracking-[0.5em] text-[10px] text-white/90 uppercase font-bold drop-shadow-md">
+                  <span className="tracking-[0.5em] text-xs text-white/90 uppercase font-bold drop-shadow-md">
                     The Wedding Invitation Of
                   </span>
                   <div className="w-8 h-px bg-wedding-secondary/50"></div>
@@ -382,17 +383,17 @@ export default function App() {
 
               <motion.h1 
                 variants={nameVariants}
-                className="font-serif italic text-6xl md:text-8xl text-white pb-6 drop-shadow-2xl"
+                className="font-serif italic text-7xl md:text-9xl text-white pb-6 drop-shadow-2xl"
               >
                 Andri & Tia
               </motion.h1>
 
               <motion.div variants={itemVariants} className="mb-12">
-                <p className="text-[10px] text-white/70 font-medium italic mt-6 tracking-[0.2em] uppercase">
+                <p className="text-xs text-white/70 font-medium italic mt-6 tracking-[0.2em] uppercase">
                   Save The Date
                 </p>
                  <div className="inline-block py-2 border-y border-wedding-secondary/30 px-6">
-                  <p className="tracking-[0.4em] text-[12px] text-white font-bold uppercase">
+                  <p className="tracking-[0.4em] text-sm text-white font-bold uppercase">
                     Minggu 2 Juni 2026
                   </p>
                 </div>
@@ -400,14 +401,14 @@ export default function App() {
               
               <motion.div variants={itemVariants} className="pt-8 flex flex-col items-center gap-6">
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-[10px] text-white/80 font-medium tracking-[0.2em] uppercase">Kepada Yth,</p>
-                  <p className="text-2xl md:text-3xl font-serif italic text-white font-bold capitalize drop-shadow-lg">{namaTamu}</p>
+                  <p className="text-xs text-white/80 font-medium tracking-[0.2em] uppercase">Kepada Yth,</p>
+                  <p className="text-3xl md:text-5xl font-serif italic text-white font-bold capitalize drop-shadow-lg">{namaTamu}</p>
                 </div>
                 <motion.button 
                   onClick={handleOpen}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-wedding-secondary text-white px-14 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.4em] shadow-2xl hover:brightness-110 transition-all border border-white/10"
+                  className="bg-wedding-secondary text-white px-14 py-4 rounded-full text-xs font-bold uppercase tracking-[0.4em] shadow-2xl hover:brightness-110 transition-all border border-white/10"
                 >
                   Buka Undangan
                 </motion.button>
@@ -452,12 +453,12 @@ export default function App() {
               <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-wedding-secondary/50 rounded-br-xl"></div>
               
               <div className="mb-8">
-                <span className="font-serif text-4xl md:text-5xl text-wedding-primary">﷽</span>
+                <span className="font-serif text-5xl md:text-6xl text-wedding-primary">﷽</span>
               </div>
-              <p className="text-[13px] md:text-[15px] text-wedding-primary/80 leading-relaxed font-medium mb-6 relative z-10">
+              <p className="text-[15px] md:text-lg text-wedding-primary/80 leading-relaxed font-medium mb-6 relative z-10">
                 "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
               </p>
-              <p className="tracking-widest text-[10px] md:text-xs text-wedding-secondary font-bold uppercase">
+              <p className="tracking-widest text-xs md:text-sm text-wedding-secondary font-bold uppercase">
                 (QS. Ar-Rum: 21)
               </p>
             </div>
@@ -469,8 +470,8 @@ export default function App() {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-wedding-border to-transparent"></div>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16" data-aos="fade-up">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary font-bold mb-3 block">Profil</span>
-              <h2 className="text-4xl font-serif italic text-wedding-primary mb-4">Kedua Mempelai</h2>
+              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Profil</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-4">Kedua Mempelai</h2>
               <div className="w-12 h-px bg-wedding-border mx-auto"></div>
             </div>
 
@@ -481,16 +482,16 @@ export default function App() {
                   <img src="/assets/images/gallery3.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Andri" />
                 </div>
                 <div>
-                  <h3 className="font-serif italic text-3xl mb-1 text-wedding-primary">Andri Herdiana</h3>
-                  <p className="text-[10px] text-wedding-secondary font-bold tracking-widest">Putra dari Bapak Ade Iyus & Ibu Elin Marlina</p>
+                  <h3 className="font-serif italic text-5xl mb-1 text-wedding-primary">Andri Herdiana</h3>
+                  <p className="text-[13px] text-wedding-secondary font-bold tracking-widest">Putra dari Bapak Ade Iyus & Ibu Elin Marlina</p>
                 </div>
               </div>
 
               {/* & Separator */}
               <div className="flex items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10" data-aos="zoom-in" data-aos-delay="50">
-                <div className="w-16 h-16 rounded-full bg-wedding-bg border border-wedding-border shadow-sm flex items-center justify-center text-wedding-primary relative overflow-hidden group">
+                <div className="w-16 h-16 rounded-full bg-gray-200/50 backdrop-blur-md border border-white/40 shadow-[0_4px_15px_rgba(0,0,0,0.05)] flex items-center justify-center text-wedding-primary relative overflow-hidden group">
                   <div className="absolute inset-0 bg-wedding-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <span className="font-serif italic text-4xl relative z-10">&amp;</span>
+                  <span className="font-serif italic font-light text-5xl relative z-10">&amp;</span>
                 </div>
               </div>
 
@@ -500,8 +501,8 @@ export default function App() {
                   <img src="/assets/images/gallery2.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Tia" />
                 </div>
                 <div>
-                  <h3 className="font-serif italic text-3xl mb-1 text-wedding-primary">Tia Khoerunnisa</h3>
-                  <p className="text-[10px] text-wedding-secondary font-bold tracking-widest">Putra dari Bapak Budi Kurniawan & Ibu Ade Rin Rin</p>
+                  <h3 className="font-serif italic text-5xl mb-1 text-wedding-primary">Tia Khoerunnisa</h3>
+                  <p className="text-[13px] text-wedding-secondary font-bold tracking-widest">Putra dari Bapak Budi Kurniawan & Ibu Ade Rin Rin</p>
                 </div>
               </div>
             </div>
@@ -511,10 +512,10 @@ export default function App() {
 
         {/* Events Section */}
         <section id="acara" className="section-padding bg-wedding-accent">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16" data-aos="fade-up">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary font-bold mb-3 block">Details</span>
-              <h2 className="text-4xl font-serif italic text-wedding-primary mb-6">Lokasi Acara</h2>
+              <span className="tracking-ultra text-[12px] text-wedding-secondary font-bold mb-3 block">Details</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-6">Lokasi Acara</h2>
               <div className="w-12 h-px bg-wedding-border mx-auto"></div>
             </div>
 
@@ -535,9 +536,9 @@ export default function App() {
                 }
               ].map((ev, i) => (
                 <div key={i} className="bg-wedding-bg p-8 rounded-2xl border border-wedding-border text-center space-y-4" data-aos="fade-up" data-aos-delay={i * 100}>
-                  <Heart className="w-6 h-6 text-wedding-primary mx-auto opacity-40" />
-                  <h3 className="font-serif italic text-2xl text-wedding-primary">{ev.title}</h3>
-                  <div className="text-[11px] text-wedding-secondary font-bold space-y-1">
+                  <Heart className="w-7 h-7 text-wedding-primary mx-auto opacity-40" />
+                  <h3 className="font-serif italic text-4xl text-wedding-primary">{ev.title}</h3>
+                  <div className="text-[13px] text-wedding-secondary font-bold space-y-1">
                     <p>{ev.time}</p>
                     <p>{ev.location}</p>
                   </div>
@@ -545,9 +546,9 @@ export default function App() {
                     href={ev.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full mt-4 border border-wedding-primary text-wedding-primary py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white transition-all text-center"
+                    className="block w-full mt-4 border border-wedding-primary text-wedding-primary py-2 rounded-lg text-[11px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white transition-all text-center"
                   >
-                    Buka Maps
+                    Lihat Lokasi
                   </a>
                 </div>
               ))}
@@ -563,7 +564,7 @@ export default function App() {
           
           <div className="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
             <div className="mb-10">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary text-center font-bold mb-4 block">Save The Date</span>
+              <span className="tracking-ultra text-[14px] text-wedding-secondary text-center font-bold mb-4 block">Save The Date</span>
               <div className="w-8 h-px bg-wedding-secondary/30 mx-auto"></div>
             </div>
             <CountdownTimer />
@@ -574,8 +575,8 @@ export default function App() {
         <section id="galeri" className="section-padding bg-wedding-bg">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16" data-aos="fade-up">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary font-bold mb-3 block">Memories</span>
-              <h2 className="text-4xl font-serif italic text-wedding-primary mb-6">Galeri Foto</h2>
+              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Memories</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-6">Galeri Foto</h2>
               <div className="w-12 h-px bg-wedding-border mx-auto"></div>
             </div>
 
@@ -600,8 +601,8 @@ export default function App() {
         <section id="buku-tamu" className="section-padding bg-wedding-accent">
           <div className="max-w-md mx-auto">
             <div className="text-center mb-12" data-aos="fade-up">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary font-bold mb-3 block">Guestbook</span>
-              <h2 className="text-3xl font-serif italic text-wedding-primary mb-4">Doa & Harapan</h2>
+              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Guestbook</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-4">Doa & Harapan</h2>
               <div className="w-8 h-px bg-wedding-border mx-auto"></div>
             </div>
 
@@ -615,9 +616,9 @@ export default function App() {
                     setGuestName(e.target.value);
                     if (formErrors.name) setFormErrors(prev => ({ ...prev, name: undefined }));
                   }}
-                  className={`w-full bg-white border ${formErrors.name ? 'border-red-400' : 'border-wedding-border'} text-[11px] p-4 rounded-xl outline-none focus:border-wedding-primary transition-all`} 
+                  className={`w-full bg-white border ${formErrors.name ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl outline-none focus:border-wedding-primary transition-all`} 
                 />
-                {formErrors.name && <p className="text-[9px] text-red-500 font-bold ml-2">{formErrors.name}</p>}
+                {formErrors.name && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.name}</p>}
               </div>
 
               <div className="space-y-1">
@@ -628,14 +629,14 @@ export default function App() {
                     setGuestMessage(e.target.value);
                     if (formErrors.message) setFormErrors(prev => ({ ...prev, message: undefined }));
                   }}
-                  className={`w-full bg-white border ${formErrors.message ? 'border-red-400' : 'border-wedding-border'} text-[11px] p-4 rounded-xl h-24 resize-none outline-none focus:border-wedding-primary transition-all`}
+                  className={`w-full bg-white border ${formErrors.message ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl h-24 resize-none outline-none focus:border-wedding-primary transition-all`}
                 ></textarea>
-                {formErrors.message && <p className="text-[9px] text-red-500 font-bold ml-2">{formErrors.message}</p>}
+                {formErrors.message && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.message}</p>}
               </div>
 
               <button 
                 onClick={handleGuestSubmit}
-                className="w-full bg-wedding-primary text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-ultra shadow-sm hover:bg-wedding-secondary transition-all"
+                className="w-full bg-wedding-primary text-white py-4 rounded-xl text-xs font-bold uppercase tracking-ultra shadow-sm hover:bg-wedding-secondary transition-all"
               >
                 Kirim Ucapan
               </button>
@@ -646,14 +647,14 @@ export default function App() {
               {messages.map((msg, i) => (
                 <div key={i} className="bg-white p-5 rounded-2xl border border-wedding-border shadow-sm" data-aos="fade-up">
                   <div className="flex justify-between items-start mb-2">
-                    <h5 className="text-[11px] font-bold text-wedding-primary uppercase tracking-wider">{msg.name}</h5>
-                    <span className="text-[8px] text-wedding-secondary opacity-60 font-medium">{msg.date}</span>
+                    <h5 className="text-[13px] font-bold text-wedding-primary uppercase tracking-wider">{msg.name}</h5>
+                    <span className="text-[10px] text-wedding-secondary opacity-60 font-medium">{msg.date}</span>
                   </div>
-                  <p className="text-[12px] text-wedding-secondary italic leading-relaxed">"{msg.message}"</p>
+                  <p className="text-[14px] text-wedding-secondary italic leading-relaxed">"{msg.message}"</p>
                 </div>
               ))}
               {messages.length === 0 && (
-                <p className="text-center text-[10px] text-wedding-secondary italic opacity-50 py-10">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>
+                <p className="text-center text-xs text-wedding-secondary italic opacity-50 py-10">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>
               )}
             </div>
           </div>
@@ -663,8 +664,8 @@ export default function App() {
         <section id="hadiah" className="section-padding bg-wedding-bg">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-12" data-aos="fade-up">
-              <span className="tracking-ultra text-[10px] text-wedding-secondary font-bold mb-3 block">Digital Envelope</span>
-              <h2 className="text-3xl font-serif italic text-wedding-primary mb-4">Kado Pernikahan</h2>
+              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Digital Envelope</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-4">Kado Pernikahan</h2>
               <div className="w-8 h-px bg-wedding-border mx-auto"></div>
             </div>
 
@@ -698,10 +699,10 @@ export default function App() {
 
                       {/* Account Info */}
                       <div className="space-y-0.5">
-                        <p className="text-[#374151] font-mono text-lg md:text-xl tracking-[0.1em] font-medium">
+                        <p className="text-[#374151] font-mono text-xl md:text-2xl tracking-[0.1em] font-medium">
                           {acc.number.match(/.{1,4}/g)?.join(' ')}
                         </p>
-                        <p className="text-[#6B7280] text-[10px] md:text-xs font-sans uppercase tracking-[0.2em] font-bold opacity-80">
+                        <p className="text-[#6B7280] text-xs md:text-[14px] font-sans uppercase tracking-[0.2em] font-bold opacity-80">
                           {acc.holder}
                         </p>
                       </div>
@@ -727,7 +728,7 @@ export default function App() {
             </div>
 
             <div className="mt-12 text-center" data-aos="fade-up">
-              <p className="text-[10px] text-wedding-secondary font-medium leading-relaxed italic opacity-80">
+              <p className="text-xs text-wedding-secondary font-medium leading-relaxed italic opacity-80">
                 Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.<br/>
                 Dan Jika memberi adalah ungkapan kasih Anda, kami ucapkan terima kasih.
               </p>
@@ -746,13 +747,13 @@ export default function App() {
               <img src="/assets/images/gallery1.jpeg" className="w-full h-full object-cover" alt="Andri & Tia" />
             </div>
 
-            <h2 className="font-serif italic text-4xl md:text-5xl text-wedding-primary mb-10">Andri & Tia</h2>
+            <h2 className="font-serif italic text-5xl md:text-6xl text-wedding-primary mb-10">Andri & Tia</h2>
             <div className="flex justify-center gap-6 mb-10 opacity-30">
-              <Heart size={16} fill="currentColor" className="text-wedding-secondary" />
-              <Heart size={16} fill="currentColor" className="text-wedding-secondary" />
-              <Heart size={16} fill="currentColor" className="text-wedding-secondary" />
+              <Heart size={20} fill="currentColor" className="text-wedding-secondary" />
+              <Heart size={20} fill="currentColor" className="text-wedding-secondary" />
+              <Heart size={20} fill="currentColor" className="text-wedding-secondary" />
             </div>
-            <p className="text-[9px] text-wedding-secondary uppercase tracking-[0.3em] font-medium opacity-60">&copy; 2026 The Wedding Journey • Andri & Tia</p>
+            <p className="text-[11px] text-wedding-secondary uppercase tracking-[0.3em] font-medium opacity-60">&copy; 2026 The Wedding Journey • Andri & Tia</p>
           </div>
         </footer>
 
@@ -774,7 +775,7 @@ export default function App() {
               className="flex flex-col items-center gap-1 text-wedding-secondary hover:text-wedding-primary transition-colors"
             >
               {item.icon}
-              <span className="text-[8px] font-bold uppercase tracking-widest">{item.label}</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">{item.label}</span>
             </button>
           ))}
         </nav>
