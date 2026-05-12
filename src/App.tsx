@@ -155,6 +155,7 @@ const nameVariants = {
 };
 
 export default function App() {
+  const namaTamu = new URLSearchParams(window.location.search).get('to') || 'Bapak/Ibu/Saudara/i';
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -173,17 +174,26 @@ export default function App() {
       easing: 'ease-out-cubic'
     });
 
-    // Load messages from localStorage
-    const savedMessages = localStorage.getItem('wedding_messages');
-    if (savedMessages) {
-      try {
-        setMessages(JSON.parse(savedMessages));
-      } catch (e) {
-        console.error("Failed to parse saved messages", e);
+    // Load messages from Supabase
+    fetch('https://ijwvplcfljneboirjwvr.supabase.co/rest/v1/ucapan?order=created_at.desc', {
+      method: 'GET',
+      headers: {
+        'apikey': 'sb_publishable_0bswJmpj_51qEJZNxlv4ug_tkfCR4Kn',
+        'Authorization': 'Bearer sb_publishable_0bswJmpj_51qEJZNxlv4ug_tkfCR4Kn'
       }
-    } else {
-      setMessages([]);
-    }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          const formattedMessages = data.map((item: any) => ({
+            name: item.nama || 'Tamu',
+            message: item.pesan || '',
+            date: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
+          }));
+          setMessages(formattedMessages);
+        }
+      })
+      .catch(err => console.error("Failed to load messages from database:", err));
 
     const tryPlayAudio = () => {
       if (audioRef.current && !isPlaying) {
@@ -253,7 +263,7 @@ export default function App() {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const handleGuestSubmit = () => {
+  const handleGuestSubmit = async () => {
     const errors: {name?: string; message?: string} = {};
     if (!guestName.trim()) {
       errors.name = 'Nama lengkap harus diisi';
@@ -267,24 +277,40 @@ export default function App() {
       return;
     }
 
-    // Add new message to list
-    const newMessage = {
-      name: guestName,
-      message: guestMessage,
-      date: new Date().toISOString().split('T')[0]
-    };
-    
-    const updatedMessages = [newMessage, ...messages];
-    setMessages(updatedMessages);
-    localStorage.setItem('wedding_messages', JSON.stringify(updatedMessages));
+    try {
+      const res = await fetch('https://ijwvplcfljneboirjwvr.supabase.co/rest/v1/ucapan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal',
+          'apikey': 'sb_publishable_0bswJmpj_51qEJZNxlv4ug_tkfCR4Kn',
+          'Authorization': 'Bearer sb_publishable_0bswJmpj_51qEJZNxlv4ug_tkfCR4Kn'
+        },
+        body: JSON.stringify({ nama: guestName, pesan: guestMessage })
+      });
 
-    // Reset errors and clear form on success
-    setFormErrors({});
-    setGuestName('');
-    setGuestMessage('');
-    
-    // Smooth scroll to top of section or show success state
-    document.getElementById('buku-tamu')?.scrollIntoView({ behavior: 'smooth' });
+      if (!res.ok) throw new Error('Failed to post to Supabase');
+
+      // Add new message to list locally so it appears immediately without refresh
+      const newLocalMessage = {
+        name: guestName,
+        message: guestMessage,
+        date: new Date().toISOString().split('T')[0]
+      };
+      
+      setMessages(prev => [newLocalMessage, ...prev]);
+
+      // Reset errors and clear form on success
+      setFormErrors({});
+      setGuestName('');
+      setGuestMessage('');
+      
+      // Smooth scroll to top of section or show success state
+      document.getElementById('buku-tamu')?.scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+      console.error("Error submitting message:", error);
+      alert('Maaf, terjadi kesalahan saat mengirim pesan.');
+    }
   };
 
   return (
@@ -372,7 +398,11 @@ export default function App() {
                 </div>
               </motion.div>
               
-              <motion.div variants={itemVariants} className="pt-8 flex flex-col items-center gap-8">
+              <motion.div variants={itemVariants} className="pt-8 flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-[10px] text-white/80 font-medium tracking-[0.2em] uppercase">Kepada Yth,</p>
+                  <p className="text-2xl md:text-3xl font-serif italic text-white font-bold capitalize drop-shadow-lg">{namaTamu}</p>
+                </div>
                 <motion.button 
                   onClick={handleOpen}
                   whileHover={{ scale: 1.05 }}
@@ -397,10 +427,15 @@ export default function App() {
           <video 
             ref={videoRef}
             muted 
-            loop
             playsInline
             autoPlay
             preload="auto"
+            onEnded={() => {
+              if (videoRef.current) {
+                videoRef.current.currentTime = 5;
+                videoRef.current.play().catch(e => console.log("Video loop play failed:", e));
+              }
+            }}
             className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover transform-gpu pointer-events-none"
             style={{ transform: 'translateZ(0)' }}
           >
