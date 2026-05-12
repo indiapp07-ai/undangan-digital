@@ -597,70 +597,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Guest Book Section */}
-        <section id="buku-tamu" className="section-padding bg-wedding-accent">
-          <div className="max-w-md mx-auto">
-            <div className="text-center mb-12" data-aos="fade-up">
-              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Guestbook</span>
-              <h2 className="text-5xl font-serif italic text-wedding-primary mb-4">Doa & Harapan</h2>
-              <div className="w-8 h-px bg-wedding-border mx-auto"></div>
-            </div>
-
-            <div className="bg-wedding-bg p-6 rounded-2xl border border-wedding-border space-y-4" data-aos="fade-up">
-              <div className="space-y-1">
-                <input 
-                  type="text" 
-                  placeholder="Nama Lengkap" 
-                  value={guestName}
-                  onChange={(e) => {
-                    setGuestName(e.target.value);
-                    if (formErrors.name) setFormErrors(prev => ({ ...prev, name: undefined }));
-                  }}
-                  className={`w-full bg-white border ${formErrors.name ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl outline-none focus:border-wedding-primary transition-all`} 
-                />
-                {formErrors.name && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.name}</p>}
-              </div>
-
-              <div className="space-y-1">
-                <textarea 
-                  placeholder="Pesan & Doa Ucapan" 
-                  value={guestMessage}
-                  onChange={(e) => {
-                    setGuestMessage(e.target.value);
-                    if (formErrors.message) setFormErrors(prev => ({ ...prev, message: undefined }));
-                  }}
-                  className={`w-full bg-white border ${formErrors.message ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl h-24 resize-none outline-none focus:border-wedding-primary transition-all`}
-                ></textarea>
-                {formErrors.message && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.message}</p>}
-              </div>
-
-              <button 
-                onClick={handleGuestSubmit}
-                className="w-full bg-wedding-primary text-white py-4 rounded-xl text-xs font-bold uppercase tracking-ultra shadow-sm hover:bg-wedding-secondary transition-all"
-              >
-                Kirim Ucapan
-              </button>
-            </div>
-
-            {/* Display Messages */}
-            <div className="mt-10 space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-              {messages.map((msg, i) => (
-                <div key={i} className="bg-white p-5 rounded-2xl border border-wedding-border shadow-sm" data-aos="fade-up">
-                  <div className="flex justify-between items-start mb-2">
-                    <h5 className="text-[13px] font-bold text-wedding-primary uppercase tracking-wider">{msg.name}</h5>
-                    <span className="text-[10px] text-wedding-secondary opacity-60 font-medium">{msg.date}</span>
-                  </div>
-                  <p className="text-[14px] text-wedding-secondary italic leading-relaxed">"{msg.message}"</p>
-                </div>
-              ))}
-              {messages.length === 0 && (
-                <p className="text-center text-xs text-wedding-secondary italic opacity-50 py-10">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Gift Section */}
+          {/* Gift Section */}
         <section id="hadiah" className="section-padding bg-wedding-bg">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-12" data-aos="fade-up">
@@ -732,6 +669,69 @@ export default function App() {
                 Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.<br/>
                 Dan Jika memberi adalah ungkapan kasih Anda, kami ucapkan terima kasih.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Guest Book Section */}
+        <section id="buku-tamu" className="section-padding bg-wedding-accent">
+          <div className="max-w-md mx-auto">
+            <div className="text-center mb-12" data-aos="fade-up">
+              <span className="tracking-ultra text-xs text-wedding-secondary font-bold mb-3 block">Guestbook</span>
+              <h2 className="text-5xl font-serif italic text-wedding-primary mb-4">Doa & Harapan</h2>
+              <div className="w-8 h-px bg-wedding-border mx-auto"></div>
+            </div>
+
+            <div className="bg-wedding-bg p-6 rounded-2xl border border-wedding-border space-y-4" data-aos="fade-up">
+              <div className="space-y-1">
+                <input 
+                  type="text" 
+                  placeholder="Nama Lengkap" 
+                  value={guestName}
+                  onChange={(e) => {
+                    setGuestName(e.target.value);
+                    if (formErrors.name) setFormErrors(prev => ({ ...prev, name: undefined }));
+                  }}
+                  className={`w-full bg-white border ${formErrors.name ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl outline-none focus:border-wedding-primary transition-all`} 
+                />
+                {formErrors.name && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.name}</p>}
+              </div>
+
+              <div className="space-y-1">
+                <textarea 
+                  placeholder="Pesan & Doa Ucapan" 
+                  value={guestMessage}
+                  onChange={(e) => {
+                    setGuestMessage(e.target.value);
+                    if (formErrors.message) setFormErrors(prev => ({ ...prev, message: undefined }));
+                  }}
+                  className={`w-full bg-white border ${formErrors.message ? 'border-red-400' : 'border-wedding-border'} text-[13px] p-4 rounded-xl h-24 resize-none outline-none focus:border-wedding-primary transition-all`}
+                ></textarea>
+                {formErrors.message && <p className="text-[10px] text-red-500 font-bold ml-2">{formErrors.message}</p>}
+              </div>
+
+              <button 
+                onClick={handleGuestSubmit}
+                className="w-full bg-wedding-primary text-white py-4 rounded-xl text-xs font-bold uppercase tracking-ultra shadow-sm hover:bg-wedding-secondary transition-all"
+              >
+                Kirim Ucapan
+              </button>
+            </div>
+
+            {/* Display Messages */}
+            <div className="mt-10 space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+              {messages.map((msg, i) => (
+                <div key={i} className="bg-white p-5 rounded-2xl border border-wedding-border shadow-sm" data-aos="fade-up">
+                  <div className="flex justify-between items-start mb-2">
+                    <h5 className="text-[13px] font-bold text-wedding-primary uppercase tracking-wider">{msg.name}</h5>
+                    <span className="text-[10px] text-wedding-secondary opacity-60 font-medium">{msg.date}</span>
+                  </div>
+                  <p className="text-[14px] text-wedding-secondary italic leading-relaxed">"{msg.message}"</p>
+                </div>
+              ))}
+              {messages.length === 0 && (
+                <p className="text-center text-xs text-wedding-secondary italic opacity-50 py-10">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>
+              )}
             </div>
           </div>
         </section>
